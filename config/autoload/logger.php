@@ -1,0 +1,83 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+return [
+    'default' => [
+        'handler' => [
+            'class' => Monolog\Handler\StreamHandler::class,
+            'constructor' => [
+                'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
+                'level' => Monolog\Logger::DEBUG,
+            ],
+        ],
+        'formatter' => [
+            'class' => Monolog\Formatter\LineFormatter::class,
+            'constructor' => [
+                'format' => null,
+                'dateFormat' => 'Y-m-d H:i:s',
+                'allowInlineLineBreaks' => true,
+            ],
+        ],
+    ],
+    'sql' => [
+        'handler' => [
+            'class' => Monolog\Handler\RotatingFileHandler::class,
+            'constructor' => [
+                'filename' => BASE_PATH . '/runtime/logs/slow-query.log',
+                'level' => Monolog\Logger::DEBUG,
+            ],
+        ],
+        'formatter' => [
+            'class' => Monolog\Formatter\LineFormatter::class,
+            'constructor' => [
+                'format' => null,
+                'dateFormat' => 'Y-m-d H:i:s',
+                'allowInlineLineBreaks' => true,
+            ],
+        ]
+    ],
+    //异常拦截
+    'exception' => [
+        'handler' => [
+            'class' => Monolog\Handler\RotatingFileHandler::class,
+            'constructor' => [
+                'filename' => BASE_PATH . '/runtime/logs/exception.log',
+                'level' => Monolog\Logger::DEBUG,
+            ],
+        ],
+        'formatter' => [
+            'class' => Monolog\Formatter\LineFormatter::class,
+            'constructor' => [
+                'format' => null,
+                'dateFormat' => 'Y-m-d H:i:s',
+                'allowInlineLineBreaks' => true,
+            ],
+        ],
+    ],
+    //业务日志
+    'app' => [
+        'handler' => [
+            'class' => Monolog\Handler\RotatingFileHandler::class,
+            'constructor' => [
+                'filename' => BASE_PATH . '/runtime/logs/app.log',
+                'level' => Monolog\Logger::DEBUG,
+            ],
+        ],
+        'formatter' => [
+            'class' => Monolog\Formatter\LineFormatter::class,
+            'constructor' => [
+                'format' => null,
+                'dateFormat' => 'Y-m-d H:i:s',
+                'allowInlineLineBreaks' => true
+            ]
+        ]
+    ]
+];
