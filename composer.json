@@ -1,5 +1,5 @@
 {
-    "name": "hyperf/hyperf-skeleton",
+    "name": "hyperf/hyperf-composer",
     "type": "project",
     "keywords": [
         "php",
@@ -26,7 +26,7 @@
         "hyperf/paginator": "^2.2",
         "hyperf/process": "~2.2.0",
         "hyperf/redis": "~2.2.0",
-        "xingquzu/hyperf": "dev-main"
+        "xingquzu/hyperf": "~1.0.0"
     },
     "repositories": [
         {
